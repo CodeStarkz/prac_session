@@ -76,6 +76,37 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/ds_destination_data_delete')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_storageaccount",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"File_name_to_delete": {
+						"type": "String"
+					}
+				},
+				"annotations": [],
+				"type": "Binary",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": {
+							"value": "@{\n    dataset().File_name_to_delete\n}",
+							"type": "Expression"
+						},
+						"fileSystem": "project2rawcontainer"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_storageaccount')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/ds_http_git')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -541,6 +572,58 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/ds_source_side')]",
 				"[concat(variables('factoryId'), '/datasets/ds_storage')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pipeline_to_delete')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Delete1",
+						"type": "Delete",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataset": {
+								"referenceName": "ds_destination_data_delete",
+								"type": "DatasetReference",
+								"parameters": {
+									"File_name_to_delete": "data_d89590f4-c692-4b81-8e98-dc1fab4976fc_4b05f1d1-e1fd-46f1-ae9b-384fbd4cf3c0.parquet"
+								}
+							},
+							"logStorageSettings": {
+								"linkedServiceName": {
+									"referenceName": "ls_storageaccount",
+									"type": "LinkedServiceReference"
+								},
+								"path": "project2rawcontainer"
+							},
+							"enableLogging": true,
+							"storeSettings": {
+								"type": "AzureBlobFSReadSettings",
+								"recursive": true,
+								"enablePartitionDiscovery": false
+							}
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/ds_destination_data_delete')]",
+				"[concat(variables('factoryId'), '/linkedServices/ls_storageaccount')]"
 			]
 		}
 	]
