@@ -1,0 +1,69 @@
+{
+	"name": "ds_source",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_storageaccount",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "data_3d2f75f4-687c-41d9-8969-b71f1eda6f24_43c94753-3e3f-47c8-bd1f-bd9dc694da80.parquet",
+				"fileSystem": "project2rawcontainer"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": [
+			{
+				"name": "Branch_ID",
+				"type": "UTF8"
+			},
+			{
+				"name": "Dealer_ID",
+				"type": "UTF8"
+			},
+			{
+				"name": "Model_ID",
+				"type": "UTF8"
+			},
+			{
+				"name": "Revenue",
+				"type": "UTF8"
+			},
+			{
+				"name": "Units_Sold",
+				"type": "UTF8"
+			},
+			{
+				"name": "Date_ID",
+				"type": "UTF8"
+			},
+			{
+				"name": "Day",
+				"type": "UTF8"
+			},
+			{
+				"name": "Month",
+				"type": "UTF8"
+			},
+			{
+				"name": "Year",
+				"type": "UTF8"
+			},
+			{
+				"name": "BranchName",
+				"type": "UTF8"
+			},
+			{
+				"name": "DealerName",
+				"type": "UTF8"
+			},
+			{
+				"name": "Product_Name",
+				"type": "UTF8"
+			}
+		]
+	}
+}
