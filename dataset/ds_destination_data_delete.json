@@ -22,5 +22,6 @@
 				"fileSystem": "project2rawcontainer"
 			}
 		}
-	}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
 }
