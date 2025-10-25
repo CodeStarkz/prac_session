@@ -10,6 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
+				"fileName": "data_abc19e02-b7f4-4d84-a03e-4e2428c51d59_e8cea6bf-9c41-4716-afb2-d77db3ae3069.parquet",
 				"folderPath": "raw_file",
 				"fileSystem": "project2rawcontainer"
 			},
