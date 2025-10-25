@@ -1,0 +1,24 @@
+{
+	"name": "trigger1",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "event_trigger_pipeline",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/project2rawcontainer/blobs/",
+			"ignoreEmptyBlobs": true,
+			"scope": "/subscriptions/2fd22d5c-3a79-4c47-8851-718541377d2c/resourceGroups/endtoendADFproject/providers/Microsoft.Storage/storageAccounts/medalionstoragebsg",
+			"events": [
+				"Microsoft.Storage.BlobCreated"
+			]
+		}
+	}
+}
