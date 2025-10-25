@@ -1,0 +1,9 @@
+{
+	"name": "adfprojectabhishek",
+	"location": "southeastasia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "45ffb8b4-427a-4cc6-bdfa-59c372bbab0a",
+		"tenantId": "66298988-b6cd-4f53-b1ec-b617033e29ee"
+	}
+}

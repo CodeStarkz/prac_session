@@ -1,0 +1,45 @@
+{
+	"name": "pipeline_to_delete",
+	"properties": {
+		"activities": [
+			{
+				"name": "Delete1",
+				"type": "Delete",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "ds_destination_data_delete",
+						"type": "DatasetReference",
+						"parameters": {
+							"File_name_to_delete": "data_d89590f4-c692-4b81-8e98-dc1fab4976fc_4b05f1d1-e1fd-46f1-ae9b-384fbd4cf3c0.parquet"
+						}
+					},
+					"logStorageSettings": {
+						"linkedServiceName": {
+							"referenceName": "ls_storageaccount",
+							"type": "LinkedServiceReference"
+						},
+						"path": "project2rawcontainer"
+					},
+					"enableLogging": true,
+					"storeSettings": {
+						"type": "AzureBlobFSReadSettings",
+						"recursive": true,
+						"enablePartitionDiscovery": false
+					}
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2025-10-24T21:57:56Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
