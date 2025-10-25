@@ -12,7 +12,15 @@
 					"name": "sourcedbsql"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "ds_dataflow",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
 			"transformations": [
 				{
 					"name": "filter1"
@@ -56,7 +64,14 @@
 				"filter2 sort(desc(Units_Sold, true)) ~> sort2",
 				"sort2, sort1 union(byName: true)~> union1",
 				"union1 aggregate(groupBy(Model_ID),",
-				"     Units_Sold = sum(Units_Sold)) ~> TotalSale"
+				"     Units_Sold = sum(Units_Sold)) ~> TotalSale",
+				"TotalSale sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1"
 			]
 		}
 	}

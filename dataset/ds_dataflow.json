@@ -1,0 +1,23 @@
+{
+	"name": "ds_dataflow",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_storageaccount",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "Analysis",
+				"fileSystem": "project2rawcontainer"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
