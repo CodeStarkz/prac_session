@@ -1,0 +1,6 @@
+{
+	"name": "integrationRuntimeForOnPrimeData",
+	"properties": {
+		"type": "SelfHosted"
+	}
+}
