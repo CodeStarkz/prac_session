@@ -1,0 +1,32 @@
+{
+	"name": "ds_adls_sink",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_storage_account_medallion",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"sink_file_save_name": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().sink_file_save_name",
+					"type": "Expression"
+				},
+				"folderPath": "sample",
+				"fileSystem": "gold"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
