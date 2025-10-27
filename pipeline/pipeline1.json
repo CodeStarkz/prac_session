@@ -386,6 +386,22 @@
 									"value": "\n@contains(item().name,'blinkit_data.csv')",
 									"type": "Expression"
 								},
+								"ifFalseActivities": [
+									{
+										"name": "Set variable2",
+										"type": "SetVariable",
+										"dependsOn": [],
+										"policy": {
+											"secureOutput": false,
+											"secureInput": false
+										},
+										"userProperties": [],
+										"typeProperties": {
+											"variableName": "var_upcoming_datatable",
+											"value": "False"
+										}
+									}
+								],
 								"ifTrueActivities": [
 									{
 										"name": "Set variable1",
@@ -410,6 +426,9 @@
 		],
 		"variables": {
 			"var_upcoming_file_name": {
+				"type": "String"
+			},
+			"var_upcoming_datatable": {
 				"type": "String"
 			}
 		},
