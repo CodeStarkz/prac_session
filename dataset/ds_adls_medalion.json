@@ -6,7 +6,7 @@
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
-			"source_file_name": {
+			"file_name_for_meta_data": {
 				"type": "String"
 			}
 		},
@@ -16,7 +16,7 @@
 			"location": {
 				"type": "AzureBlobFSLocation",
 				"fileName": {
-					"value": "@{\n    dataset().source_file_name\n}",
+					"value": "@dataset().file_name_for_meta_data",
 					"type": "Expression"
 				},
 				"fileSystem": "silver"

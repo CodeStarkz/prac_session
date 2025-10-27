@@ -24,7 +24,10 @@
 				"typeProperties": {
 					"dataset": {
 						"referenceName": "ds_adls_medalion",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"file_name_for_meta_data": "*"
+						}
 					},
 					"fieldList": [
 						"childItems"
@@ -73,7 +76,11 @@
 									"type": "DelimitedTextSource",
 									"storeSettings": {
 										"type": "AzureBlobFSReadSettings",
-										"fileListPath": "silver",
+										"recursive": true,
+										"wildcardFileName": {
+											"value": "@{\n    item().name\n}",
+											"type": "Expression"
+										},
 										"enablePartitionDiscovery": false
 									},
 									"formatSettings": {
@@ -107,10 +114,7 @@
 									"referenceName": "ds_adls_medalion",
 									"type": "DatasetReference",
 									"parameters": {
-										"source_file_name": {
-											"value": "@{\n    item().name\n}",
-											"type": "Expression"
-										}
+										"file_name_for_meta_data": "*"
 									}
 								}
 							],
