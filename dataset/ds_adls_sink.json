@@ -15,10 +15,6 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": {
-					"value": "@dataset().sink_file_save_name",
-					"type": "Expression"
-				},
 				"folderPath": "sample",
 				"fileSystem": "gold"
 			},
