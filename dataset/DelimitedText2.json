@@ -1,0 +1,79 @@
+{
+	"name": "DelimitedText2",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_to_git",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"file_name": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation",
+				"relativeUrl": {
+					"value": "CodeStarkz/Blanket_Data_Pipeline/refs/heads/main/@{\n    dataset().file_name\n}",
+					"type": "Expression"
+				}
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "index",
+				"type": "String"
+			},
+			{
+				"name": "airline",
+				"type": "String"
+			},
+			{
+				"name": "flight",
+				"type": "String"
+			},
+			{
+				"name": "source_city",
+				"type": "String"
+			},
+			{
+				"name": "departure_time",
+				"type": "String"
+			},
+			{
+				"name": "stops",
+				"type": "String"
+			},
+			{
+				"name": "arrival_time",
+				"type": "String"
+			},
+			{
+				"name": "destination_city",
+				"type": "String"
+			},
+			{
+				"name": "class",
+				"type": "String"
+			},
+			{
+				"name": "duration",
+				"type": "String"
+			},
+			{
+				"name": "days_left",
+				"type": "String"
+			},
+			{
+				"name": "price",
+				"type": "String"
+			}
+		]
+	}
+}
