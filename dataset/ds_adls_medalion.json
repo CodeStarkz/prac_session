@@ -5,11 +5,20 @@
 			"referenceName": "ls_storage_account_medallion",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"source_file_name": {
+				"type": "String"
+			}
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@{\n    dataset().source_file_name\n}",
+					"type": "Expression"
+				},
 				"fileSystem": "silver"
 			},
 			"columnDelimiter": ",",
